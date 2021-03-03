@@ -3,9 +3,6 @@ const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
 const app = express();
-/**
- * TODO: require routes and feed them into the server
- */
 
 app.use(helmet());
 app.use(
@@ -15,6 +12,8 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./routes/pages.js')(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
