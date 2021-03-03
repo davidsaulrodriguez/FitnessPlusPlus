@@ -1,0 +1,27 @@
+{
+  "name": "fitnessplusplus",
+  "version": "0.1.0",
+  "description": "A fitness tracking application with created with MongoDB, Express and NodeJS.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Warning: no test specified\" && exit 0",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "seed": "node seeders/seed.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.16.3",
+    "helmet": "^4.4.1",
+    "mongoose": "^5.3.16",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "nodemon": "^2.0.7"
+  }
+}
