@@ -13,6 +13,9 @@ app.use(
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// API routes need to load first. Order matters because of Switch Statements used in routing.
+// This was a design decision that I decided to go with, just because I like it 🤷🏽‍♂️
+require('./routes/api.js')(app);
 require('./routes/pages.js')(app);
 
 const PORT = process.env.PORT || 3000;
