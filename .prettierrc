@@ -1,11 +1,10 @@
 {
-  "tabWidth": 2,
   "endOfLine": "lf",
   "arrowParens": "always",
   "jsxBracketSameLine": true,
   "jsxSingleQuote": true,
   "bracketSpacing": true,
-  "singleQuote": true,
+  "singleQuote": false,
   "htmlWhitespaceSensitivity": "strict",
   "useTabs": false
 }
