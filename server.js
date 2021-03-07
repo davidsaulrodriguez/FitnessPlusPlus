@@ -1,11 +1,9 @@
-require('dotenv').config();
-const express = require('express');
-const helmet = require('helmet');
-const path = require('path');
+require("dotenv").config();
+const mongoose = require("mongoose");
+const express = require("express");
+const helmet = require("helmet");
+const path = require("path");
 const app = express();
-/**
- * TODO: require routes and feed them into the server
- */
 
 app.use(helmet());
 app.use(
@@ -14,7 +12,22 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
+
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/workout",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  }
+);
+
+// API routes need to load first. Order matters because of Switch Statements used in routing.
+// This was a design decision that I decided to go with, just because I like it 🤷🏽‍♂️
+require("./routes/api.js")(app);
+require("./routes/pages.js")(app);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (err) => {
